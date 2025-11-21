@@ -3,9 +3,10 @@ using UnityEngine;
 
 namespace _MyProject.Scripts.MyGame.Characters
 {
-    public sealed class PlayerAnimations
+    public abstract class PlayerAnimations
     {
         public static readonly int VelocityParam = Animator.StringToHash("Velocity");
+        public static readonly int JumpingParam = Animator.StringToHash("IsJumping");
     }
     
     [RequireComponent(typeof(Animator))]
@@ -26,6 +27,8 @@ namespace _MyProject.Scripts.MyGame.Characters
             {
                 _animator.SetFloat(PlayerAnimations.VelocityParam, playerMovementController.HorizontalVelocity);
             }
+            
+            _animator.SetBool(PlayerAnimations.JumpingParam, playerMovementController.IsJumping);
         }
     }
 }

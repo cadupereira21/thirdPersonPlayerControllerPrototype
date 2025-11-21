@@ -597,7 +597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fcb367bb54538f94d8716a84f8b6776b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.065
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fcb367bb54538f94d8716a84f8b6776b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -642,6 +642,10 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: fcb367bb54538f94d8716a84f8b6776b, type: 3}
       propertyPath: m_AnimatePhysics
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: fcb367bb54538f94d8716a84f8b6776b, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: fcb367bb54538f94d8716a84f8b6776b, type: 3}
       propertyPath: m_ApplyRootMotion
@@ -933,7 +937,7 @@ MonoBehaviour:
   walkSpeed: 2
   runSpeed: 6
   rotationSpeed: 7
-  jumpHeight: 2
+  jumpHeight: 3
   isGrounded: 0
 --- !u!143 &1138449715
 CharacterController:
@@ -954,12 +958,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.85
-  m_Radius: 0.35
+  m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.94, z: 0}
+  m_Center: {x: 0, y: 0.925, z: 0}
 --- !u!4 &1138449716
 Transform:
   m_ObjectHideFlags: 0
