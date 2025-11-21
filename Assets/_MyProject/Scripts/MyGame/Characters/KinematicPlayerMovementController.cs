@@ -8,14 +8,20 @@ namespace _MyProject.Scripts.MyGame.Characters
     [RequireComponent(typeof(CharacterController))]
     public class KinematicPlayerMovementController : MonoBehaviour
     {
-        [SerializeField] private float movementSpeed = 5f;
+        [Header("Movement Settings")]
+        [SerializeField] private float walkSpeed = 5f;
+        [SerializeField] private float runSpeed = 10f;
         [SerializeField] private float rotationSpeed = 7f;
+        
+        [Header("Jump Settings")]
         [SerializeField] private float jumpHeight = 5f;
+        public bool isGrounded;
         
         private CharacterController _characterController;
         
         // Actions
         private InputAction _moveAction;
+        private InputAction _runAction;
         private InputAction _jumpAction;
 
         private Camera _camera;
@@ -31,11 +37,13 @@ namespace _MyProject.Scripts.MyGame.Characters
         private void Start()
         {
             _moveAction = InputManager.Instance.PlayerActions.Move;
+            _runAction = InputManager.Instance.PlayerActions.Run;
             _jumpAction = InputManager.Instance.PlayerActions.Jump;
         }
 
         private void Update()
         {
+            isGrounded = _characterController.isGrounded;
             HandleMovement();
         }
 
@@ -64,18 +72,20 @@ namespace _MyProject.Scripts.MyGame.Characters
 
             movement.y = CalculateVerticalForce();
             
+            float movementSpeed = _runAction.inProgress ? runSpeed : walkSpeed;
+            
             _characterController.Move(movement * (Time.deltaTime * movementSpeed));
         }
         
         private float CalculateVerticalForce()
         {
-            if (!_characterController.isGrounded)
+            if (!isGrounded)
             {
                 _verticalVelocity += Physics.gravity.y * Time.fixedDeltaTime;
             }
             else
             {
-                _verticalVelocity = 0f;
+                _verticalVelocity = -.1f;
                 
                 if (_jumpAction.triggered)
                 {
