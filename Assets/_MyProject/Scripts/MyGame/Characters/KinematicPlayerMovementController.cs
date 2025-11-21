@@ -28,6 +28,8 @@ namespace _MyProject.Scripts.MyGame.Characters
         
         private float _verticalVelocity = 0f;
 
+        public float HorizontalVelocity => new Vector3(_characterController.velocity.x, 0, _characterController.velocity.z).magnitude;
+
         private void Awake()
         {
             _characterController = this.GetComponent<CharacterController>();
@@ -68,13 +70,12 @@ namespace _MyProject.Scripts.MyGame.Characters
         {
             Vector2 inputValue = _moveAction.ReadValue<Vector2>();
             Vector3 movement = new (inputValue.x, 0, inputValue.y);
-            movement = _camera.transform.TransformDirection(movement);
+            float movementSpeed = _runAction.inProgress ? runSpeed : walkSpeed;
+            movement = _camera.transform.TransformDirection(movement) * movementSpeed;
 
             movement.y = CalculateVerticalForce();
             
-            float movementSpeed = _runAction.inProgress ? runSpeed : walkSpeed;
-            
-            _characterController.Move(movement * (Time.deltaTime * movementSpeed));
+            _characterController.Move(movement * (Time.deltaTime));
         }
         
         private float CalculateVerticalForce()
