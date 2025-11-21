@@ -19,6 +19,8 @@ namespace _MyProject.Scripts.MyGame.Characters
         private InputAction _jumpAction;
 
         private Camera _camera;
+        
+        private float _verticalVelocity = 0f;
 
         private void Awake()
         {
@@ -67,20 +69,22 @@ namespace _MyProject.Scripts.MyGame.Characters
         
         private float CalculateVerticalForce()
         {
-            float verticalVelocity = -1f;
             if (!_characterController.isGrounded)
             {
-                verticalVelocity -= Physics.gravity.y * Time.fixedDeltaTime;
+                _verticalVelocity += Physics.gravity.y * Time.fixedDeltaTime;
             }
             else
             {
+                _verticalVelocity = 0f;
+                
                 if (_jumpAction.triggered)
                 {
                     Debug.Log($"[KinematicPlayerMovementController] Jump triggered");
+                    _verticalVelocity = Mathf.Sqrt(jumpHeight * 2f * -Physics.gravity.y);
                 }
             }
 
-            return verticalVelocity;
+            return _verticalVelocity;
         }
     }
 }
