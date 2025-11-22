@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 namespace _MyProject.Scripts.MyGame.Characters
 {
     [RequireComponent(typeof(CharacterController))]
-    public class KinematicPlayerMovementController : MonoBehaviour
+    public class KinematicPlayerBasicMovementController : MonoBehaviour
     {
         [Header("Movement Settings")]
         [SerializeField] private float walkSpeed = 5f;

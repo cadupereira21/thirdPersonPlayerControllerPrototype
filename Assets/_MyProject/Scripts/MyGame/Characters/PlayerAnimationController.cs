@@ -13,7 +13,7 @@ namespace _MyProject.Scripts.MyGame.Characters
     [RequireComponent(typeof(Animator))]
     public class PlayerAnimationController : MonoBehaviour
     {
-        [SerializeField] private KinematicPlayerMovementController playerMovementController;
+        [SerializeField] private KinematicPlayerBasicMovementController playerBasicMovementController;
         
         private Animator _animator;
 
@@ -24,13 +24,13 @@ namespace _MyProject.Scripts.MyGame.Characters
 
         public void Update()
         {
-            if (playerMovementController.isGrounded)
+            if (playerBasicMovementController.isGrounded)
             {
-                _animator.SetFloat(PlayerAnimations.HorizontalVelocityParam, playerMovementController.HorizontalVelocity);
+                _animator.SetFloat(PlayerAnimations.HorizontalVelocityParam, playerBasicMovementController.HorizontalVelocity);
             }
             
-            _animator.SetFloat(PlayerAnimations.VerticalVelocityParam, playerMovementController.VerticalVelocity);
-            _animator.SetBool(PlayerAnimations.IsGroundedParam, playerMovementController.isGrounded);
+            _animator.SetFloat(PlayerAnimations.VerticalVelocityParam, playerBasicMovementController.VerticalVelocity);
+            _animator.SetBool(PlayerAnimations.IsGroundedParam, playerBasicMovementController.isGrounded);
         }
     }
 }

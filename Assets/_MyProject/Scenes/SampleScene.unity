@@ -681,7 +681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc468dd61ae4642975b34a323d1df60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovementController: {fileID: 1138449714}
+  playerBasicMovementController: {fileID: 0}
 --- !u!1 &929572583
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,7 +916,7 @@ GameObject:
   - component: {fileID: 1138449714}
   - component: {fileID: 1138449715}
   m_Layer: 0
-  m_Name: KINEMATIC PLAYER 2
+  m_Name: KINEMATIC PLAYER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
