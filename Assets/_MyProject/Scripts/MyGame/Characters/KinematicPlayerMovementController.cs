@@ -29,7 +29,7 @@ namespace _MyProject.Scripts.MyGame.Characters
         private float _verticalVelocity = 0f;
 
         public float HorizontalVelocity => new Vector3(_characterController.velocity.x, 0, _characterController.velocity.z).magnitude;
-        public bool IsJumping => _verticalVelocity > 0f;
+        public float VerticalVelocity => _characterController.velocity.y;
 
         private void Awake()
         {
@@ -87,7 +87,7 @@ namespace _MyProject.Scripts.MyGame.Characters
             }
             else
             {
-                _verticalVelocity = -.1f;
+                _verticalVelocity = -.5f;
                 
                 if (_jumpAction.triggered)
                 {

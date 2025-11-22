@@ -936,8 +936,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 2
   runSpeed: 6
-  rotationSpeed: 7
-  jumpHeight: 3
+  rotationSpeed: 5
+  jumpHeight: 7
   isGrounded: 0
 --- !u!143 &1138449715
 CharacterController:

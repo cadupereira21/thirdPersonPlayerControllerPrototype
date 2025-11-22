@@ -5,8 +5,9 @@ namespace _MyProject.Scripts.MyGame.Characters
 {
     public abstract class PlayerAnimations
     {
-        public static readonly int VelocityParam = Animator.StringToHash("Velocity");
-        public static readonly int JumpingParam = Animator.StringToHash("IsJumping");
+        public static readonly int HorizontalVelocityParam = Animator.StringToHash("HorizontalVelocity");
+        public static readonly int VerticalVelocityParam = Animator.StringToHash("VerticalVelocity");
+        public static readonly int IsGroundedParam = Animator.StringToHash("IsGrounded");
     }
     
     [RequireComponent(typeof(Animator))]
@@ -25,10 +26,11 @@ namespace _MyProject.Scripts.MyGame.Characters
         {
             if (playerMovementController.isGrounded)
             {
-                _animator.SetFloat(PlayerAnimations.VelocityParam, playerMovementController.HorizontalVelocity);
+                _animator.SetFloat(PlayerAnimations.HorizontalVelocityParam, playerMovementController.HorizontalVelocity);
             }
             
-            _animator.SetBool(PlayerAnimations.JumpingParam, playerMovementController.IsJumping);
+            _animator.SetFloat(PlayerAnimations.VerticalVelocityParam, playerMovementController.VerticalVelocity);
+            _animator.SetBool(PlayerAnimations.IsGroundedParam, playerMovementController.isGrounded);
         }
     }
 }
